@@ -35,7 +35,7 @@ function App() {
     setLoading(true);
     try {
       const res = await fetch(
-        `http://www.omdbapi.com/?apikey=b467b945&t=${movieSearch}`
+        `https://www.omdbapi.com/?apikey=b467b945&t=${movieSearch}`
       );
 
       if (!res.ok) {
@@ -57,7 +57,7 @@ function App() {
         setLoading(true);
         try {
           const res = await fetch(
-            `http://www.omdbapi.com/?apikey=b467b945&t=${tempMovie}`
+            `https://www.omdbapi.com/?apikey=b467b945&t=${tempMovie}`
           );
           const data = await res.json();
 
