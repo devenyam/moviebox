@@ -25,7 +25,8 @@ function App() {
   const [isLoading, setLoading] = useState(false);
   const [movieSearch, setMovieSearch] = useState('');
   const movieEl = useRef(null);
-  const tempMovie = tempMovies[randomIndex];
+  // const tempMovie = tempMovies[randomIndex];
+  const tempMovie = 'Avengers';
 
   function handleMovieSearch(e) {
     setMovieSearch(e.target.value);
@@ -39,15 +40,19 @@ function App() {
       );
 
       if (!res.ok) {
-        throw new Error('Movie not found');
+        throw new Error('Invalid API KEY 🚩');
       }
 
       const data = await res.json();
 
+      if (data.Response === 'False') {
+        throw new Error('Movie not found ☹️');
+      }
+
       setLoading(false);
       setMovie(data);
     } catch (error) {
-      movieEl.current.textContent = `${error.message} ☹️`;
+      movieEl.current.textContent = `${error.message}`;
     }
   }
 
@@ -59,16 +64,24 @@ function App() {
           const res = await fetch(
             `https://www.omdbapi.com/?apikey=b467b945&t=${tempMovie}`
           );
+
+          console.log(res);
+          if (!res.ok) {
+            throw new Error('Invalid API KEY 🚩');
+          }
+
           const data = await res.json();
 
-          if (!res.ok) {
-            throw new Error('Movie not found');
+          if (data.Response === 'False') {
+            throw new Error('Movie not found ☹️');
           }
+
+          console.log(data);
 
           setLoading(false);
           setMovie(data);
         } catch (error) {
-          movieEl.current.textContent = `${error.message} ☹️`;
+          movieEl.current.textContent = `${error.message}`;
         }
       }
 
