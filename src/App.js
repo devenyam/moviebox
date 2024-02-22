@@ -25,8 +25,7 @@ function App() {
   const [isLoading, setLoading] = useState(false);
   const [movieSearch, setMovieSearch] = useState('');
   const movieEl = useRef(null);
-  // const tempMovie = tempMovies[randomIndex];
-  const tempMovie = 'Avengers';
+  const tempMovie = tempMovies[randomIndex];
 
   function handleMovieSearch(e) {
     setMovieSearch(e.target.value);
