@@ -64,7 +64,6 @@ function App() {
             `https://www.omdbapi.com/?apikey=b467b945&t=${tempMovie}`
           );
 
-          console.log(res);
           if (!res.ok) {
             throw new Error('Invalid API KEY 🚩');
           }
@@ -74,8 +73,6 @@ function App() {
           if (data.Response === 'False') {
             throw new Error('Movie not found ☹️');
           }
-
-          console.log(data);
 
           setLoading(false);
           setMovie(data);
